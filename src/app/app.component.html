@@ -1,6 +1,6 @@
-<app-orbit-list [satellites]="displayList"></app-orbit-list>
+<h3>Orbit Report</h3>
 <div class="search-form">
-<input #searchTerm (keyup.enter)="search(searchTerm.value)" type='text' placeholder="Search Here"/>
+<input #searchTerm class="search-box" (keyup.enter)="search(searchTerm.value)" type='text' placeholder="Search Here"/>
 <button (click)="search(searchTerm.value)">Go</button>
-
 </div>
+<app-orbit-list [satellites]="displayList"></app-orbit-list>

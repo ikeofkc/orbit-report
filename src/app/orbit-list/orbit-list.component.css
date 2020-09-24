@@ -1,28 +1,44 @@
 .sortable {
     cursor: pointer;
-    color: #dd5;
+    color: #ffffff;
+    font-weight: 900;
 }
 
 .warning {
-    background-color: #da8a8a;
+    background-color: #FF405D;
+    color: #ffffff;
+    font-weight: bold;
 }
 
 table {
   color: #111;
-  border-radius: 5px;
+  border-radius: 10px;
   overflow: hidden;
-  margin: 12px 0;
-  min-width: 300px;
-  background: #dad8d8;
+  margin: auto;
+  min-width: 500px;
+  background: #F1F0FF;
+  box-shadow: 0px 4px 20px #888888;
 }
 
 .header-row {
-    background: #34495E;
-    color: #fff
+    background: #4C44A2;
+    color: #F1F0FF;
+    font-weight: normal;
 }
 
-th, td {
+th {
+    text-align: center;
+    margin: 5px 10px;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+
+td {
     text-align: left;
     margin: 5px 10px;
     padding: 6px;
 }
+
+tr:nth-child(even) {background-color: #ffffff;}
