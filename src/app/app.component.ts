@@ -9,12 +9,16 @@ import { Satellite } from './satellite';
 export class AppComponent {
   title = 'orbit-report';
   sourceList: Satellite[];
-  constructor() {
-   this.sourceList = [];
-   let satellitesUrl = 'https://handlers.education.launchcode.org/static/satellites.json';
+  displayList: Satellite[];
 
-   window.fetch(satellitesUrl).then(function(response) {
-      response.json().then(function(data) {
+  constructor() {
+     this.sourceList = [];
+     this.displayList = [];
+     let satellitesUrl = 'https://handlers.education.launchcode.org/static/satellites.json';
+
+     window.fetch(satellitesUrl).then(function(response) {
+        response.json().then(function(data) {
+
 
         // TODO: loop over satellites
          let satData = data.satellites;
@@ -24,9 +28,23 @@ export class AppComponent {
            // TODO: add the new Satellite object to sourceList using: this.sourceList.push(satellite);
            this.sourceList.push(satelliteObj);
           }
+          this.displayList = this.sourceList.slice(0);
+        }.bind(this));
+     }.bind(this));
+  }
 
-      }.bind(this));
-   }.bind(this));
+  search(searchTerm: string): void {
+   let matchingSatellites: Satellite[] = [];
+   searchTerm = searchTerm.toLowerCase();
+   for(let i=0; i < this.sourceList.length; i++) {
+      let name = this.sourceList[i].name.toLowerCase();
+      if (name.indexOf(searchTerm) >= 0) {
+         matchingSatellites.push(this.sourceList[i]);
+      }
+   }
+   // assign this.displayList to be the array of matching satellites
+   // this will cause Angular to re-make the table, but now only containing matches
+   this.displayList = matchingSatellites;
+  }
 
-}
 }
